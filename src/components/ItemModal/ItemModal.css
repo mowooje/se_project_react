@@ -1,0 +1,34 @@
+.modal__close {
+  border: none;
+  background-color: #fff;
+  padding: 0px;
+  background-color: transparent;
+}
+
+.modal__close-icon {
+  height: 22px;
+  width: 22px;
+  border: none;
+  padding: 0;
+}
+.modal__image {
+  height: 498px;
+  width: 498px;
+  border-radius: 22px;
+  margin-left: -28px;
+  margin-top: -28px;
+}
+
+.modal__caption {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.modal__weather {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
