@@ -1,7 +1,15 @@
-.switch {
+.toggle__switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-left: auto;
+}
+
+/* .switch {
   display: flex;
   position: relative;
-}
+} */
 
 .switch__box {
   border-radius: 25px;
