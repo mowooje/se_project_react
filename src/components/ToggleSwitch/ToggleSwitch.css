@@ -13,8 +13,57 @@
 
 .switch__box {
   border-radius: 25px;
-  border: 2px solid #000;
+  border: 2px solid #7e7e7e;
   width: 50px;
   height: 30px;
   appearance: none;
+}
+
+.switch__slider {
+  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+}
+
+.switch__slider-F {
+  top: 0px;
+  left: 25px;
+}
+
+.switch__slider-C {
+  top: 0px;
+  left: -5px;
+}
+
+.switch__temp-F {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.36px;
+  position: absolute;
+  text-align: center;
+  top: -8px;
+  left: 35px;
+}
+
+.switch__temp-C {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.36px;
+  position: absolute;
+  text-align: center;
+  position: absolute;
+  top: -8px;
+  left: 5px;
+}
+
+.switch__active {
+  font-size: 14px;
+  color: #fff;
 }
