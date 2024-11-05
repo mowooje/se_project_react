@@ -6,11 +6,6 @@
   margin-left: auto;
 }
 
-/* .switch {
-  display: flex;
-  position: relative;
-} */
-
 .switch__box {
   border-radius: 25px;
   border: 2px solid #7e7e7e;
@@ -47,6 +42,7 @@
   line-height: 17.36px;
   position: absolute;
   text-align: center;
+  color: #f3f3f3;
   top: -8px;
   left: 35px;
 }
@@ -59,17 +55,12 @@
   position: absolute;
   text-align: center;
   position: absolute;
+  color: #f3f3f3;
   top: -8px;
   left: 5px;
-}
-
-.switch__temp-F,
-.switch__temp-C {
-  display: none;
 }
 
 .switch__active {
   font-size: 14px;
   color: #fff;
-  display: inline;
 }
