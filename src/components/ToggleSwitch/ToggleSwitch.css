@@ -32,7 +32,7 @@
 
 .switch__slider-F {
   top: 0px;
-  left: 25px;
+  left: 24px;
 }
 
 .switch__slider-C {
@@ -63,7 +63,13 @@
   left: 5px;
 }
 
+.switch__temp-F,
+.switch__temp-C {
+  display: none;
+}
+
 .switch__active {
   font-size: 14px;
   color: #fff;
+  display: inline;
 }
