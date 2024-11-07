@@ -8,6 +8,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer.jsx";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
+import { addItems, deleteItem } from "../../utils/api";
 import AddItemModal from "../../AddItemModal/AddItemModal.jsx";
 
 function App() {
@@ -29,23 +30,35 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const handleAddItem = (newItem) => {
-    const itemWithId = {
-      ...newItem,
-      id: Date.now().toString(),
-      likes: [],
-    };
-
-    addServerItem(itemWithId)
-      .then((addedItem) => {
-        setItems((prevItems) => [addedItem, ...prevItems]);
-        setActiveModal("");
-      })
-      .catch((err) => console.error("Error adding new item:", err));
-  };
-
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+
+  const onAddItem = (name, imageUrl, weather) => {
+    addItems({ name, imageUrl, weather })
+      .then((data) => {
+        console.log(data);
+        setClothingItems((currentClothingItems) => [
+          data,
+          ...currentClothingItems,
+        ]);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const onDeleteItem = () => {
+    deleteItem(selectedCard._id)
+      .then(() => {
+        const updatedClothingItems = clothingItems.filter(
+          (item) => item._id !== selectedCard._id
+        );
+        setClothingItems(updatedClothingItems);
+        closeActiveModal();
+      })
+      .catch((error) => {
+        console.error("Failed to delete item:", error);
+      });
   };
 
   const handleToggleSwitchChange = () => {
@@ -72,13 +85,14 @@ function App() {
         </div>
         <AddItemModal
           isOpen={activeModal === "add-garment"}
-          onAddItem={handleAddItem}
+          onAddItem={onAddItem}
           onClose={closeActiveModal}
         />
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          onConfirm={onDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
