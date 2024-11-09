@@ -4,14 +4,14 @@ import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-// import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile.jsx";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer.jsx";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { addItems, deleteItem, getItems } from "../../utils/api";
-import AddItemModal from "../../AddItemModal/AddItemModal.jsx";
+import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
