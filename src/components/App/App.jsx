@@ -4,7 +4,7 @@ import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+// import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer.jsx";
@@ -93,7 +93,6 @@ function App() {
             />
             <Route path="/profile" element={<p>PROFILE</p>} />
           </Routes>
-          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
 
           <Footer />
         </div>
