@@ -32,3 +32,17 @@
   font-size: 20px;
   line-height: 24px;
 }
+
+.modal__delete-button {
+  position: absolute;
+  bottom: 68px;
+  right: 32px;
+  border: none;
+  background-color: white;
+  color: rgba(255, 77, 0, 1);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 15px;
+  font-family: "Cabinet Grotesk", sans-serif;
+}
