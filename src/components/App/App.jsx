@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer.jsx";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import { addItems, deleteItem, getItems } from "../../utils/api";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
+import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -99,7 +100,7 @@ function App() {
               element={
                 <Main
                   weatherData={weatherData}
-                  onCardClick={handleCardClick}
+                  handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
                 />
               }
@@ -110,6 +111,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
@@ -125,6 +127,11 @@ function App() {
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}
+          onClose={closeActiveModal}
+          onConfirm={onDeleteItem}
+        />
+        <DeleteConfirmModal
+          isOpen={activeModal === "delete item"}
           onClose={closeActiveModal}
           onConfirm={onDeleteItem}
         />

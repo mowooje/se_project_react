@@ -1,0 +1,40 @@
+.modal__delete-popup {
+  width: 670px;
+  height: 220px;
+  border-radius: 20px 0px 0px 0px;
+  border: 1px 0px 0px 0px;
+}
+
+.modal__text {
+  font-weight: 700;
+  line-height: 24px;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Cabinet Grotesk", sans-serif;
+}
+
+.modal__confirm-button {
+  background: none;
+  border: none;
+  color: rgba(255, 77, 0, 1);
+  cursor: pointer;
+  top: 148px;
+  left: 266px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  margin: auto;
+}
+
+.modal__cancel-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Cabinet Grotesk", sans-serif;
+  margin: auto;
+  display: flex;
+  font-weight: 700;
+  line-height: 3;
+  font-size: 20px;
+}
