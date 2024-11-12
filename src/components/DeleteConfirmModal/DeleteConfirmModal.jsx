@@ -1,10 +1,14 @@
 import React from "react";
 import "./DeleteConfirmModal.css";
+import closeButton from "../../assets/close-button.png";
 
 const DeleteConfirmModal = ({ isOpen, onClose, onConfirm }) => {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content modal__delete-popup">
+        <button type="button" className="modal__close" onClick={onClose}>
+          <img src={closeButton} alt="Close" />
+        </button>
         <h2 className="modal__text">
           Are you sure you want to delete this item? This action is
           irreversible.
