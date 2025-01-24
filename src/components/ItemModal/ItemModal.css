@@ -46,3 +46,7 @@
   line-height: 15px;
   font-family: "Cabinet Grotesk", sans-serif;
 }
+
+.modal__delete-button_hidden {
+  display: none;
+}

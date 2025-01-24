@@ -1,14 +1,34 @@
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import avatar from "../../assets/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const currentUser = useContext(CurrentUserContext);
+
+  const renderAvatar = () => {
+    if (currentUser?.avatar) {
+      return (
+        <img
+          src={currentUser.avatar}
+          alt={`${currentUser.name}'s avatar`}
+          className="header__avatar"
+        />
+      );
+    }
+
+    // Placeholder with the user's first letter
+    const userInitial = currentUser?.name?.charAt(0)?.toUpperCase() || "U";
+    return <div className="header__avatar-placeholder">{userInitial}</div>;
+  };
+
   return (
     <header className="header">
       <Link to="/">
@@ -20,19 +40,22 @@ function Header({ handleAddClick, weatherData }) {
       <div className="toggle__switch">
         <ToggleSwitch />
       </div>
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add Clothes
-      </button>
-      <Link to="/profile" className="header__link">
-        <div className="header__user-container">
-          <p className="header__username">Michael Owooje</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
-        </div>
-      </Link>
+      {currentUser ? (
+        <Link to="/profile" className="header__link">
+          <div className="header__user-container">
+            <p className="header__username">{currentUser.name}</p>
+            {renderAvatar()}
+          </div>
+        </Link>
+      ) : (
+        <button
+          onClick={handleAddClick}
+          type="button"
+          className="header__add-clothes-btn"
+        >
+          + Add Clothes
+        </button>
+      )}
     </header>
   );
 }

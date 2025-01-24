@@ -32,4 +32,44 @@ function deleteItem(id, token) {
   }).then(checkResponse);
 }
 
-export { getItems, addItems, deleteItem, checkResponse };
+function editProfile({ name, avatarUrl }, token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      avatar: avatarUrl,
+    }),
+  }).then(checkResponse);
+}
+
+function addCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+}
+
+function removeCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+}
+
+export {
+  getItems,
+  addItems,
+  deleteItem,
+  editProfile,
+  addCardLike,
+  removeCardLike,
+  checkResponse,
+};
