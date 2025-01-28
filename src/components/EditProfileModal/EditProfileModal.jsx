@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./EditProfileModal.css";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { editProfile } from "../../utils/api";
 
 function EditProfileModal({ isOpen, onClose, token, onUpdateUser }) {

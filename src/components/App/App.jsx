@@ -14,7 +14,7 @@ import Footer from "../Footer/Footer.jsx";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
-import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {
   addItems,
   deleteItem,
@@ -27,6 +27,8 @@ import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 import { fetchUserData } from "../../utils/auth";
 
 function App() {
+  const token = localStorage.getItem("jwt");
+
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
@@ -90,9 +92,8 @@ function App() {
   };
 
   const handleCardLike = (item) => {
-    if (!currentUser) return; // Prevent running if no user is logged in
+    if (!currentUser) return;
 
-    const token = localStorage.getItem("jwt");
     const isLiked = item.likes.includes(currentUser._id);
 
     if (!isLiked) {

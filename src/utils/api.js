@@ -64,6 +64,26 @@ function removeCardLike(id, token) {
   }).then(checkResponse);
 }
 
+function loginUser({ email, password }) {
+  return fetch(`${baseUrl}/signin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  }).then(checkResponse);
+}
+
+function registerUser({ email, password, name }) {
+  return fetch(`${baseUrl}/signup`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password, name }),
+  }).then(checkResponse);
+}
+
 export {
   getItems,
   addItems,
@@ -72,4 +92,6 @@ export {
   addCardLike,
   removeCardLike,
   checkResponse,
+  loginUser,
+  registerUser,
 };
