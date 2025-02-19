@@ -1,4 +1,4 @@
-import "./LoginModal.css";
+// import "./LoginModal.css";
 import useFormAndValidation from "../../utils/useFormAndValidation.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -56,6 +56,18 @@ const LoginModal = ({
         onChange={handleChange}
         required
       />
+      <div className="modal__button-container">
+        <button type="submit" className="modal__submit">
+          Login
+        </button>
+        <button
+          className="modal__to-register"
+          type="button"
+          // onClick={handleRegister}
+        >
+          or Sign up
+        </button>
+      </div>
     </ModalWithForm>
   );
 };

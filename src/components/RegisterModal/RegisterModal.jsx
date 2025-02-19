@@ -1,5 +1,5 @@
-import "./RegisterModal.css";
-import useFormAndValidation from "../../utils/useFormAndValidation.js";
+// import "./RegisterModal.css";
+import useFormAndValidation from "../../utils/useFormAndValidation";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function RegisterModal({
@@ -14,13 +14,13 @@ function RegisterModal({
   const handleSubmit = (e) => {
     e.preventDefault();
     handleRegistration(values);
-    resetForm({ email: "", password: "", name: "", avatar: "" });
+    resetForm();
   };
 
   return (
     <ModalWithForm
       title="Sign up"
-      buttonText={isLoading ? "Registering" : "Next"}
+      buttonText={isLoading ? "Registering..." : "Next"}
       altButtonText="or Log in"
       altButtonClick={() => setActiveModal("login")}
       isOpen={isOpen}
@@ -28,54 +28,65 @@ function RegisterModal({
       formValid={isValid}
       onClose={onClose}
     >
-      <label className="modal__label" htmlFor="email-register">
-        Email *
+      <label htmlFor="register__email" className="modal__label">
+        Email*{" "}
+        <input
+          className="modal__input"
+          name="password"
+          type="password"
+          placeholder="Email"
+          value={values.password || ""}
+          onChange={handleChange}
+          required
+        />
       </label>
-      <input
-        className="modal__input"
-        id="email-register"
-        name="email"
-        type="email"
-        value={values.email || ""}
-        onChange={handleChange}
-        required
-      />
-      <label className="modal__label" htmlFor="password-register">
-        Password *
+
+      <label htmlFor="register__password" className="modal__label">
+        Password*{" "}
+        <input
+          className="modal__input"
+          name="name"
+          type="text"
+          placeholder="Password"
+          value={values.name || ""}
+          onChange={handleChange}
+          required
+        />
       </label>
-      <input
-        className="modal__input"
-        id="password-register"
-        name="password"
-        type="password"
-        value={values.password || ""}
-        onChange={handleChange}
-        required
-      />
-      <label className="modal__label" htmlFor="name-register">
-        Name *
+
+      <label htmlFor="register__name" className="modal__label">
+        Name*{" "}
+        <input
+          className="modal__input"
+          name="email"
+          type="email"
+          placeholder="Name"
+          value={values.email || ""}
+          onChange={handleChange}
+          required
+        />
       </label>
-      <input
-        className="modal__input"
-        id="name-register"
-        name="name"
-        type="text"
-        value={values.name || ""}
-        onChange={handleChange}
-        required
-      />
-      <label className="modal__label" htmlFor="avatar-register">
-        Avatar URL *
+
+      <label htmlFor="register__avatar" className="modal__label">
+        Avatar URL*{" "}
+        <input
+          className="modal__input"
+          name="avatar"
+          type="url"
+          placeholder="Avatar URL"
+          value={values.avatar || ""}
+          onChange={handleChange}
+          required
+        />
       </label>
-      <input
-        className="modal__input"
-        id="avatar-register"
-        name="avatar"
-        type="url"
-        value={values.avatar || ""}
-        onChange={handleChange}
-        required
-      />
+      <div className="modal__button-container">
+        <button type="submit" className="modal__submit">
+          Sign Up
+        </button>
+        <button className="modal__to-login" type="button">
+          or Login
+        </button>
+      </div>
     </ModalWithForm>
   );
 }
