@@ -35,7 +35,7 @@ function RegisterModal({
           name="password"
           type="password"
           placeholder="Email"
-          value={values.password || ""}
+          value={values.email || ""}
           onChange={handleChange}
           required
         />
@@ -48,7 +48,7 @@ function RegisterModal({
           name="name"
           type="text"
           placeholder="Password"
-          value={values.name || ""}
+          value={values.password || ""}
           onChange={handleChange}
           required
         />
@@ -61,7 +61,7 @@ function RegisterModal({
           name="email"
           type="email"
           placeholder="Name"
-          value={values.email || ""}
+          value={values.name || ""}
           onChange={handleChange}
           required
         />

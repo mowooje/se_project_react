@@ -74,13 +74,13 @@ function loginUser({ email, password }) {
   }).then(checkResponse);
 }
 
-function registerUser({ email, password, name }) {
+function registerUser({ email, password, name, avatar }) {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password, name }),
+    body: JSON.stringify({ email, password, name, avatar }),
   }).then(checkResponse);
 }
 
