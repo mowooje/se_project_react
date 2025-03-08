@@ -65,3 +65,11 @@
   font-size: 20px;
   line-height: 24px;
 }
+
+.header__avatar {
+  display: flex;
+  width: 60px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
