@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 
 import { coordinates, APIkey } from "../../utils/constants";
@@ -25,6 +25,7 @@ import { fetchUserData } from "../../utils/auth";
 const currentDate = new Date().toLocaleDateString();
 
 function App() {
+  const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
@@ -107,6 +108,13 @@ function App() {
       .finally(() => setIsLoading(false));
   };
 
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+    navigate("/");
+  };
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentTemperatureUnitContext.Provider
@@ -125,6 +133,7 @@ function App() {
               path="/profile"
               element={
                 <Profile
+                  handleSignOut={handleSignOut}
                   clothingItems={clothingItems}
                   weatherData={weatherData}
                 />

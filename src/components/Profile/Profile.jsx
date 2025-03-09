@@ -31,7 +31,10 @@ function Profile({
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar onEditProfileClick={handleEditProfileClick} />
+        <SideBar
+          onEditProfileClick={handleEditProfileClick}
+          handleSignOutClick={handleSignOut}
+        />
       </section>
       <section className="profile__clothing-items">
         <ClothesSection
