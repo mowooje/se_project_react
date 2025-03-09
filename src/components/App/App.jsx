@@ -121,9 +121,24 @@ function App() {
                 <Main clothingItems={clothingItems} weatherData={weatherData} />
               }
             />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  weatherData={weatherData}
+                />
+              }
+            />
           </Routes>
           <Footer />
+          {/* <RegisterModal
+            isOpen={activeModal === "register"}
+            handleRegistration={handleRegister}
+            isLoading={isLoading}
+            onClose={() => setActiveModal("")}
+            setActiveModal={setActiveModal}
+          /> */}
           <RegisterModal
             isOpen={activeModal === "register"}
             handleRegistration={handleRegister}

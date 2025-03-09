@@ -17,8 +17,8 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
     if (currentUser?.avatar) {
       return (
         <img
-          src={currentUser.avatar}
-          alt={`${currentUser.name}'s avatar`}
+          src={currentUser?.avatar}
+          alt={`${currentUser?.name}'s avatar`}
           className="header__avatar"
         />
       );
@@ -45,7 +45,7 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
         <>
           <Link to="/profile" className="header__link">
             <div className="header__user-container">
-              <p className="header__username">{currentUser.name}</p>
+              <p className="header__username">{currentUser?.name}</p>
               {renderAvatar()}
             </div>
           </Link>

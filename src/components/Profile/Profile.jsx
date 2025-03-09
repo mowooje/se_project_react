@@ -25,7 +25,7 @@ function Profile({
   };
 
   const handleUpdateUser = (updatedUser) => {
-    currentUser.setUser(updatedUser);
+    currentUser?.setUser(updatedUser);
   };
 
   return (
