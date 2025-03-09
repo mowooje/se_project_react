@@ -1,5 +1,17 @@
 .profile {
   display: flex;
-  gap: 75px;
-  justify-content: space-between;
+  margin-top: 100px;
+  gap: 70px;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.profile__sidebar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile__clothing-items {
+  display: flex;
+  /* width: 100%; */
 }

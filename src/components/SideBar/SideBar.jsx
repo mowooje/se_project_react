@@ -3,7 +3,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import avatarPlaceholder from "../../assets/avatar.svg";
 import "./SideBar.css";
 
-function SideBar({ onEditProfileClick }) {
+function SideBar({ onEditProfileClick, handleSignOut }) {
   const currentUser = useContext(CurrentUserContext);
 
   // Placeholder for the avatar (initial letter in a circle) if no avatar URL is provided
@@ -28,6 +28,13 @@ function SideBar({ onEditProfileClick }) {
         onClick={onEditProfileClick}
       >
         Edit Profile
+      </button>
+      <button
+        className="sidebar__signout-btn"
+        onClick={handleSignOut}
+        type="button"
+      >
+        Sign out
       </button>
     </div>
   );

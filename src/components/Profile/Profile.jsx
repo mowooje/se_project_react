@@ -42,10 +42,6 @@ function Profile({
         />
       </section>
 
-      <button className="profile__sign-out" onClick={handleSignOut}>
-        Sign out
-      </button>
-
       <EditProfileModal
         isOpen={isEditModalOpen}
         onClose={handleCloseModal}
