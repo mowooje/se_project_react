@@ -14,6 +14,7 @@ function EditProfileModal({ isOpen, onClose, token, onUpdateUser }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("jwt");
     setIsLoading(true);
     editProfile({ name, avatarUrl }, token)
       .then((updatedUser) => {
