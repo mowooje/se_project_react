@@ -11,7 +11,7 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
     day: "numeric",
   });
 
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const renderAvatar = () => {
     if (currentUser?.avatar) {

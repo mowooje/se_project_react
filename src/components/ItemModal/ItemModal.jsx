@@ -4,7 +4,7 @@ import closeButton from "../../assets/close-button.png";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const isOwn = card.owner === currentUser?._id;
 

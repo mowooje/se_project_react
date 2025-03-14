@@ -14,7 +14,7 @@ function Profile({
   handleSignOut, // Passing handleSignOut from parent (App.jsx)
 }) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const handleEditProfileClick = () => {
     setIsEditModalOpen(true);

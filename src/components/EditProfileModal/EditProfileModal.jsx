@@ -4,7 +4,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { editProfile } from "../../utils/api";
 
 function EditProfileModal({ isOpen, onClose, token, onUpdateUser }) {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
   const [name, setName] = useState(currentUser?.name || "");
   const [avatarUrl, setAvatarUrl] = useState(currentUser?.avatar || "");
   const [isLoading, setIsLoading] = useState(false);
@@ -15,6 +15,11 @@ function EditProfileModal({ isOpen, onClose, token, onUpdateUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("jwt");
+    if (!name.trim() || !avatarUrl.trim()) {
+      // ✅ Prevents sending empty values
+      console.error("Both name and avatar URL are required!");
+      return;
+    }
     setIsLoading(true);
     editProfile({ name, avatarUrl }, token)
       .then((updatedUser) => {

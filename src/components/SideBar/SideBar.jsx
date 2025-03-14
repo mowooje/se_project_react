@@ -4,7 +4,7 @@ import avatarPlaceholder from "../../assets/avatar.svg";
 import "./SideBar.css";
 
 function SideBar({ onEditProfileClick, handleSignOutClick }) {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   // Placeholder for the avatar (initial letter in a circle) if no avatar URL is provided
   const renderAvatar = currentUser?.avatar ? (
