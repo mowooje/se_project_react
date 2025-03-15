@@ -12,11 +12,16 @@ function ItemCard({ item, onCardClick, handleCardLike }) {
   }`;
 
   const handleItemCardClick = () => {
-    onCardClick(item);
+    if (typeof onCardClick === "function") {
+      // ✅ Prevent errors if undefined
+      onCardClick(item);
+    } else {
+      console.error("onCardClick is not a function");
+    }
   };
 
   const handleLikeClick = () => {
-    if (currentUser) {
+    if (currentUser && typeof handleCardLike === "function") {
       handleCardLike({ id: item._id, isLiked });
     }
   };

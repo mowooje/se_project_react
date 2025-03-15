@@ -7,6 +7,7 @@ import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile.jsx";
+import ItemModal from "../ItemModal/ItemModal.jsx";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer.jsx";
 import LoginModal from "../LoginModal/LoginModal";
@@ -38,6 +39,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({});
 
   // ✅ Corrected toggle switch function
   const handleToggleSwitchChange = () => {
@@ -129,6 +131,19 @@ function App() {
     navigate("/");
   };
 
+  const handleCardClick = (card) => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
+
+  const closeActiveModal = () => {
+    setActiveModal("");
+  };
+
+  const handleCardLike = ({ id, isLiked }) => {
+    console.log(`Item ${id} is ${isLiked ? "liked" : "unliked"}`);
+  };
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <CurrentTemperatureUnitContext.Provider
@@ -140,7 +155,12 @@ function App() {
             <Route
               path="/"
               element={
-                <Main clothingItems={clothingItems} weatherData={weatherData} />
+                <Main
+                  clothingItems={clothingItems}
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                  handleCardLike={handleCardLike}
+                />
               }
             />
             <Route
@@ -159,6 +179,11 @@ function App() {
             isOpen={activeModal === "add-item"}
             onAddItem={handleAddItem}
             onClose={() => setActiveModal("")}
+          />
+          <ItemModal
+            activeModal={activeModal}
+            card={selectedCard}
+            onClose={closeActiveModal}
           />
           <RegisterModal
             isOpen={activeModal === "register"}
