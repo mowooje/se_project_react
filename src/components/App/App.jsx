@@ -11,6 +11,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer.jsx";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {
@@ -73,6 +74,19 @@ function App() {
         });
     }
   }, []);
+
+  // Handle adding new item
+  const handleAddItem = (name, imageUrl, weather) => {
+    const token = localStorage.getItem("jwt");
+    if (!token) return;
+
+    addItems({ name, imageUrl, weather }, token)
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        setActiveModal(""); // Close modal after adding
+      })
+      .catch(console.error);
+  };
 
   // ✅ Handle registration and login
   const handleRegister = (values) => {
@@ -141,13 +155,11 @@ function App() {
             />
           </Routes>
           <Footer />
-          {/* <AddItemModal
-            isOpen={activeModal === "register"}
-            handleRegistration={handleRegister}
-            isLoading={isLoading}
+          <AddItemModal
+            isOpen={activeModal === "add-item"}
+            onAddItem={handleAddItem}
             onClose={() => setActiveModal("")}
-            setActiveModal={setActiveModal}
-          /> */}
+          />
           <RegisterModal
             isOpen={activeModal === "register"}
             handleRegistration={handleRegister}

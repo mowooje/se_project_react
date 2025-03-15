@@ -60,7 +60,7 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
       ) : (
         <div className="header__auth-buttons">
           <button
-            onClick={() => setActiveModal("register")} // ✅ Directly calls setActiveModal
+            onClick={() => setActiveModal("add-item")} // ✅ Directly calls setActiveModal
             className="header__signup"
             type="button"
           >
