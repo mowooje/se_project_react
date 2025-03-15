@@ -50,7 +50,7 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
             </div>
           </Link>
           <button
-            onClick={handleAddClick}
+            onClick={() => setActiveModal("add-item")}
             type="button"
             className="header__add-clothes-btn"
           >
@@ -60,7 +60,7 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
       ) : (
         <div className="header__auth-buttons">
           <button
-            onClick={() => setActiveModal("add-item")} // ✅ Directly calls setActiveModal
+            onClick={() => setActiveModal("register")} // ✅ Directly calls setActiveModal
             className="header__signup"
             type="button"
           >
