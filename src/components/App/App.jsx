@@ -116,7 +116,7 @@ function App() {
   };
 
   return (
-    <CurrentUserContext.Provider value={(currentUser, setCurrentUser)}>
+    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -141,7 +141,7 @@ function App() {
             />
           </Routes>
           <Footer />
-          {/* <RegisterModal
+          {/* <AddItemModal
             isOpen={activeModal === "register"}
             handleRegistration={handleRegister}
             isLoading={isLoading}
