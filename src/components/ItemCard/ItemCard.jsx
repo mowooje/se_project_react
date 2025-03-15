@@ -13,7 +13,6 @@ function ItemCard({ item, onCardClick, handleCardLike }) {
 
   const handleItemCardClick = () => {
     if (typeof onCardClick === "function") {
-      // ✅ Prevent errors if undefined
       onCardClick(item);
     } else {
       console.error("onCardClick is not a function");

@@ -170,6 +170,8 @@ function App() {
                   handleSignOut={handleSignOut}
                   clothingItems={clothingItems}
                   weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                  handleCardLike={handleCardLike}
                 />
               }
             />
