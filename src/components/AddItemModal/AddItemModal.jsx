@@ -88,6 +88,10 @@ const AddItemModal = ({ onClose, onAddItem, isOpen }) => {
           />{" "}
           Cold
         </label>
+        <button type="submit" className="modal__save">
+          {" "}
+          Add Garment{" "}
+        </button>
       </fieldset>
     </ModalWithForm>
   );

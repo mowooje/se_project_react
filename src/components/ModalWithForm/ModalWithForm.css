@@ -181,3 +181,18 @@
   font-family: "Cabinet Grotesk", sans-serif;
   color: rgba(0, 0, 0, 0.5);
 }
+
+.modal__save {
+  margin-top: 32px;
+  margin-right: 16px;
+  border: 1px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 36px;
+  width: 128px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  cursor: pointer;
+}
