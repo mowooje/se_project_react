@@ -142,17 +142,17 @@ function App() {
   };
 
   const onDeleteItem = () => {
-    deleteItem(selectedCard._id)
+    const token = localStorage.getItem("jwt");
+    if (!token) return;
+
+    deleteItem(selectedCard._id, token)
       .then(() => {
-        const updatedClothingItems = clothingItems.filter(
-          (item) => item._id !== selectedCard._id
+        setClothingItems(
+          clothingItems.filter((item) => item._id !== selectedCard._id)
         );
-        setClothingItems(updatedClothingItems);
         closeActiveModal();
       })
-      .catch((error) => {
-        console.error("Failed to delete item:", error);
-      });
+      .catch((error) => console.error("Failed to delete item:", error));
   };
 
   const closeActiveModal = () => {
