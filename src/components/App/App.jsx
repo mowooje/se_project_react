@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer.jsx";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {
@@ -136,6 +137,24 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleOpenDeleteModal = () => {
+    setActiveModal("delete item");
+  };
+
+  const onDeleteItem = () => {
+    deleteItem(selectedCard._id)
+      .then(() => {
+        const updatedClothingItems = clothingItems.filter(
+          (item) => item._id !== selectedCard._id
+        );
+        setClothingItems(updatedClothingItems);
+        closeActiveModal();
+      })
+      .catch((error) => {
+        console.error("Failed to delete item:", error);
+      });
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -187,6 +206,13 @@ function App() {
             activeModal={activeModal}
             card={selectedCard}
             onClose={closeActiveModal}
+            onConfirm={onDeleteItem}
+            onDeleteItem={handleOpenDeleteModal}
+          />
+          <DeleteConfirmModal
+            isOpen={activeModal === "delete item"}
+            onClose={closeActiveModal}
+            onConfirm={onDeleteItem}
           />
           <RegisterModal
             isOpen={activeModal === "register"}
