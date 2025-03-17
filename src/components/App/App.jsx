@@ -160,7 +160,18 @@ function App() {
   };
 
   const handleCardLike = ({ id, isLiked }) => {
-    console.log(`Item ${id} is ${isLiked ? "liked" : "unliked"}`);
+    setClothingItems((prevItems) =>
+      prevItems.map((item) =>
+        item._id === id
+          ? {
+              ...item,
+              likes: isLiked
+                ? item.likes.filter((uid) => uid !== currentUser._id)
+                : [...item.likes, currentUser._id],
+            }
+          : item
+      )
+    );
   };
 
   return (
