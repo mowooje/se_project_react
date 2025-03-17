@@ -1,4 +1,4 @@
-.modal {
+/* .modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -69,4 +69,4 @@
 .modal__submit:disabled {
   background: #ccc;
   cursor: not-allowed;
-}
+} */

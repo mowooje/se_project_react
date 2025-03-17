@@ -1,4 +1,4 @@
-// import "./LoginModal.css";
+import "./LoginModal.css";
 import useFormAndValidation from "../../utils/useFormAndValidation.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 

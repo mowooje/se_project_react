@@ -1,4 +1,4 @@
-// import "./RegisterModal.css";
+import "./RegisterModal.css";
 import useFormAndValidation from "../../utils/useFormAndValidation";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 

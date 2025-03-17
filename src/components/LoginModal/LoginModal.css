@@ -1,4 +1,4 @@
-.login__title {
+/* .login__title {
   margin: 0;
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
@@ -15,7 +15,7 @@
   line-height: 20px;
 }
 
-/* .login__input {
+.login__input {
   display: block;
   width: 100%;
   border-radius: 1px;
@@ -26,7 +26,7 @@
   padding: 0;
   padding-top: 8px;
   margin-bottom: 24px;
-} */
+}
 
 .login__input_password {
   display: block;
@@ -74,4 +74,4 @@
 .login-modal__link_disabled {
   opacity: 30%;
   pointer-events: none;
-}
+} */
