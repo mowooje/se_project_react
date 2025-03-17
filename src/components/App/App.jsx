@@ -91,6 +91,10 @@ function App() {
       .catch(console.error);
   };
 
+  const handleAddClick = () => {
+    setActiveModal("add-item");
+  };
+
   // ✅ Handle registration and login
   const handleRegister = (values) => {
     setIsLoading(true);
@@ -201,6 +205,7 @@ function App() {
                   handleSignOut={handleSignOut}
                   clothingItems={clothingItems}
                   weatherData={weatherData}
+                  handleAddClick={handleAddClick}
                   handleCardClick={handleCardClick}
                   handleCardLike={handleCardLike}
                 />
