@@ -39,6 +39,15 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
       </p>
       <div className="toggle__switch">
         <ToggleSwitch />
+        {currentUser && (
+          <button
+            onClick={() => setActiveModal("add-item")}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            + Add Clothes
+          </button>
+        )}
       </div>
 
       {currentUser ? (
@@ -49,13 +58,6 @@ function Header({ handleAddClick, weatherData, setActiveModal }) {
               {renderAvatar()}
             </div>
           </Link>
-          <button
-            onClick={() => setActiveModal("add-item")}
-            type="button"
-            className="header__add-clothes-btn"
-          >
-            + Add Clothes
-          </button>
         </>
       ) : (
         <div className="header__auth-buttons">

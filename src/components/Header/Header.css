@@ -24,6 +24,10 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+  padding: 8px 12px; /* Adds padding for better clickability */
+  background-color: transparent; /* Ensures no weird background issues */
+  display: flex;
+  align-items: center;
 }
 
 .header__link {
