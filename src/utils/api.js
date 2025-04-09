@@ -1,7 +1,12 @@
 const baseUrl = "http://localhost:3001";
 
-function checkResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+export function checkResponse(res) {
+  return res.json().then((data) => {
+    if (!res.ok) {
+      throw new Error(data.message || "Something went wrong");
+    }
+    return data;
+  });
 }
 
 function getItems() {
@@ -91,7 +96,6 @@ export {
   editProfile,
   addCardLike,
   removeCardLike,
-  checkResponse,
   loginUser,
   registerUser,
 };

@@ -9,6 +9,13 @@ function EditProfileModal({ isOpen, onClose, token, onUpdateUser }) {
   const [avatarUrl, setAvatarUrl] = useState(currentUser?.avatar || "");
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    if (isOpen && currentUser) {
+      setName(currentUser.name || "");
+      setAvatarUrl(currentUser.avatar || "");
+    }
+  }, [isOpen, currentUser]);
+
   const handleNameChange = (e) => setName(e.target.value);
   const handleAvatarUrlChange = (e) => setAvatarUrl(e.target.value);
 

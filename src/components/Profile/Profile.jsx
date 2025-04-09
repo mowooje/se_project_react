@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import SideBar from "../SideBar/SideBar";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
@@ -11,10 +11,15 @@ function Profile({
   handleAddClick,
   handleCardLike,
   token,
-  handleSignOut, // Passing handleSignOut from parent (App.jsx)
+  handleSignOut,
 }) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const [items, setItems] = useState(clothingItems);
+
+  useEffect(() => {
+    setItems(clothingItems); // Ensure state updates on new items
+  }, [clothingItems]);
 
   const handleEditProfileClick = () => {
     setIsEditModalOpen(true);

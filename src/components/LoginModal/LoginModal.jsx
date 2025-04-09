@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import "./LoginModal.css";
 import useFormAndValidation from "../../utils/useFormAndValidation.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
@@ -14,8 +15,13 @@ const LoginModal = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     handleLogin(values);
-    resetForm({ email: "", password: "" });
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      resetForm({ email: "", password: "" });
+    }
+  }, [isOpen, resetForm]);
 
   return (
     <ModalWithForm

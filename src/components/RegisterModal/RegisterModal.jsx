@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import "./RegisterModal.css";
 import useFormAndValidation from "../../utils/useFormAndValidation";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
@@ -14,8 +15,13 @@ function RegisterModal({
   const handleSubmit = (e) => {
     e.preventDefault();
     handleRegistration(values);
-    resetForm();
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      resetForm({ email: "", password: "", name: "", avatar: "" });
+    }
+  }, [isOpen, resetForm]);
 
   return (
     <ModalWithForm
