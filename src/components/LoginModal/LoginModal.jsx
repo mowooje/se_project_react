@@ -69,7 +69,7 @@ const LoginModal = ({
         <button
           className="modal__to-register"
           type="button"
-          // onClick={handleRegister}
+          onClick={() => setActiveModal("register")}
         >
           or Sign up
         </button>

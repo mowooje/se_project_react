@@ -89,7 +89,11 @@ function RegisterModal({
         <button type="submit" className="modal__submit">
           Sign Up
         </button>
-        <button className="modal__to-login" type="button">
+        <button
+          className="modal__to-login"
+          type="button"
+          onClick={() => setActiveModal("login")}
+        >
           or Login
         </button>
       </div>
