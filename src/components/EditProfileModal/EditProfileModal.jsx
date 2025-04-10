@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./EditProfileModal.css";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { editProfile } from "../../utils/api";
 
 function EditProfileModal({ isOpen, onClose, token, onUpdateUser }) {
   const { currentUser } = useContext(CurrentUserContext);
-  const [name, setName] = useState(currentUser?.name || "");
-  const [avatarUrl, setAvatarUrl] = useState(currentUser?.avatar || "");
+  const [name, setName] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -23,7 +23,6 @@ function EditProfileModal({ isOpen, onClose, token, onUpdateUser }) {
     e.preventDefault();
     const token = localStorage.getItem("jwt");
     if (!name.trim() || !avatarUrl.trim()) {
-      // ✅ Prevents sending empty values
       console.error("Both name and avatar URL are required!");
       return;
     }
@@ -42,39 +41,35 @@ function EditProfileModal({ isOpen, onClose, token, onUpdateUser }) {
   };
 
   return (
-    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <div className="modal__content">
-        <button type="button" className="modal__close" onClick={onClose}>
-          ×
-        </button>
-        <h2 className="modal__title">Edit Profile</h2>
-        <form className="modal__form" onSubmit={handleSubmit}>
-          <label className="modal__label">
-            Name:
-            <input
-              type="text"
-              className="modal__input"
-              value={name}
-              onChange={handleNameChange}
-              required
-            />
-          </label>
-          <label className="modal__label">
-            Avatar URL:
-            <input
-              type="url"
-              className="modal__input"
-              value={avatarUrl}
-              onChange={handleAvatarUrlChange}
-              required
-            />
-          </label>
-          <button type="submit" className="modal__submit" disabled={isLoading}>
-            {isLoading ? "Saving..." : "Save"}
-          </button>
-        </form>
-      </div>
-    </div>
+    <ModalWithForm
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      title="Edit Profile"
+      buttonText="Save"
+      isLoading={isLoading}
+    >
+      <label className="modal__label">
+        Name:
+        <input
+          type="text"
+          className="modal__input"
+          value={name}
+          onChange={handleNameChange}
+          required
+        />
+      </label>
+      <label className="modal__label">
+        Avatar URL:
+        <input
+          type="url"
+          className="modal__input"
+          value={avatarUrl}
+          onChange={handleAvatarUrlChange}
+          required
+        />
+      </label>
+    </ModalWithForm>
   );
 }
 
