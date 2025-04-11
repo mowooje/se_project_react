@@ -22,6 +22,8 @@ import {
   getItems,
   registerUser,
   loginUser,
+  addCardLike,
+  removeCardLike,
 } from "../../utils/api";
 import { fetchUserData } from "../../utils/auth";
 
@@ -86,7 +88,7 @@ function App() {
     addItems({ name, imageUrl, weather }, token)
       .then((newItem) => {
         setClothingItems((prevItems) => [newItem.data, ...prevItems]);
-        setActiveModal(""); // Close modal after adding
+        closeActiveModal(); // Close modal after adding
       })
       .catch(console.error);
   };
@@ -107,7 +109,7 @@ function App() {
       .then((userData) => {
         setCurrentUser(userData);
         setIsLoggedIn(true);
-        closeActiveModal(""); // ✅ Close modal after login
+        closeActiveModal(); // ✅ Close modal after login
       })
       .catch((error) => console.error("Registration or login failed:", error))
       .finally(() => setIsLoading(false));
@@ -123,7 +125,7 @@ function App() {
       .then((userData) => {
         setCurrentUser(userData);
         setIsLoggedIn(true);
-        setActiveModal(""); // ✅ Close modal after login
+        closeActiveModal(); // ✅ Close modal after login
       })
       .catch((error) => console.error("Login failed:", error))
       .finally(() => setIsLoading(false));
@@ -172,7 +174,7 @@ function App() {
     likeRequest(id, token)
       .then((updatedItem) => {
         setClothingItems((prevItems) =>
-          prevItems.map((item) => (item._id === id ? updatedItem : item))
+          prevItems.map((item) => (item._id === id ? updatedItem.data : item))
         );
       })
       .catch((error) => {
