@@ -26,7 +26,6 @@ function RegisterModal({
   return (
     <ModalWithForm
       title="Sign up"
-      buttonText={isLoading ? "Registering..." : "Next"}
       altButtonText="or Log in"
       altButtonClick={() => setActiveModal("login")}
       isOpen={isOpen}
@@ -46,7 +45,6 @@ function RegisterModal({
           required
         />
       </label>
-
       <label className="modal__label">
         Password*{" "}
         <input
@@ -59,7 +57,6 @@ function RegisterModal({
           required
         />
       </label>
-
       <label className="modal__label">
         Name*{" "}
         <input
@@ -72,7 +69,6 @@ function RegisterModal({
           required
         />
       </label>
-
       <label className="modal__label">
         Avatar URL*{" "}
         <input
