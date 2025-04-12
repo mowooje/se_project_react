@@ -70,6 +70,9 @@ function EditProfileModal({ isOpen, onClose, token, onUpdateUser }) {
           required
         />
       </label>
+      <button type="submit" className="modal__submit" disabled={isLoading}>
+        {isLoading ? "Saving..." : "Save"}
+      </button>
     </ModalWithForm>
   );
 }
