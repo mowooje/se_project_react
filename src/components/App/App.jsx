@@ -220,7 +220,7 @@ function App() {
           <AddItemModal
             isOpen={activeModal === "add-item"}
             onAddItem={handleAddItem}
-            onClose={() => setActiveModal("")}
+            onClose={closeActiveModal}
           />
           <ItemModal
             activeModal={activeModal}
@@ -238,14 +238,14 @@ function App() {
             isOpen={activeModal === "register"}
             handleRegistration={handleRegister}
             isLoading={isLoading}
-            onClose={() => setActiveModal("")}
+            onClose={closeActiveModal}
             setActiveModal={setActiveModal}
           />
           <LoginModal
             isOpen={activeModal === "login"}
             handleLogin={handleLogin}
             isLoading={isLoading}
-            onClose={() => setActiveModal("")}
+            onClose={closeActiveModal}
             setActiveModal={setActiveModal}
           />
         </div>
