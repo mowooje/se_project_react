@@ -1,10 +1,9 @@
 import { checkResponse } from "./api";
 
 const baseUrl =
-  (typeof process !== "undefined" &&
-    process.env &&
-    process.env.REACT_APP_BASE_URL) ||
-  "http://localhost:3001";
+  process.env.NODE_ENV === "production"
+    ? "https://api.gcp-wtwr.wiki.gd"
+    : "http://localhost:3001";
 
 export function signUserIn(data) {
   return fetch(`${baseUrl}/signin`, {

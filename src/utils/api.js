@@ -1,4 +1,7 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.gcp-wtwr.wiki.gd"
+    : "http://localhost:3001";
 
 export function checkResponse(res) {
   return res.json().then((data) => {
